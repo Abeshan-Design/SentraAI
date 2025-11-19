@@ -1,0 +1,15 @@
+# secrets
+api_key.txt
+
+# generated data
+data/
+data_raw/
+artifacts/
+
+# build artifacts
+sentra
+sentra.exe
+
+# editor stuff
+.vscode/
+*.log
