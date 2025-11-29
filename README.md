@@ -153,5 +153,4 @@ Typical SentraAI query cost: ≈ $0.0003 (1/30th of a cent).
 
 ## Author
 Developed by Abeshan, Khalon
----
 A high-performance C++ RAG system demonstrating systems engineering, AI integration, and cross-language tooling.
