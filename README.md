@@ -126,6 +126,12 @@ Enter: `http://localhost:8000`
 - **View Documents**: Click "View Documents" to see all indexed documents
 - **Re-ingest PDFs**: Click "Re-ingest PDFs" to reprocess files in 'data_raw/' and rebuild index
 
+### Troubleshoot
+**Use this port if 8000 does not work**
+```
+python3 -m uvicorn app:app --reload --host 0.0.0.0 --port 8001
+```
+
 ## Model Pricing (GPT-5 Nano)
 | Model              | Input (per 1K tokens) | Output (per 1K tokens) |
 |--------------------|------------------------|--------------------------|
@@ -147,4 +153,5 @@ Typical SentraAI query cost: ≈ $0.0003 (1/30th of a cent).
 
 ## Author
 Developed by Abeshan, Khalon
+---
 A high-performance C++ RAG system demonstrating systems engineering, AI integration, and cross-language tooling.
