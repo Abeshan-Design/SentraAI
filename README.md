@@ -107,6 +107,25 @@ You> What does this document discuss?
 SentraAI> The text argues that...
 ```
 
+## Running the Web Interface
+1. **Install Python dependencies**
+```
+cd frontend
+pip install -r requirements.txt
+```
+
+2. **Start the FastAPI server**:
+```
+python3 -m uvicorn app:app --reload --host 0.0.0.0 --port 8000
+```
+
+3. **Open your browser**:
+Enter: `http://localhost:8000`
+
+### Using the Web Interface
+- **View Documents**: Click "View Documents" to see all indexed documents
+- **Re-ingest PDFs**: Click "Re-ingest PDFs" to reprocess files in 'data_raw/' and rebuild index
+
 ## Model Pricing (GPT-5 Nano)
 | Model              | Input (per 1K tokens) | Output (per 1K tokens) |
 |--------------------|------------------------|--------------------------|
@@ -127,5 +146,5 @@ Typical SentraAI query cost: ≈ $0.0003 (1/30th of a cent).
 - Vector index inspection tool
 
 ## Author
-Developed by Abeshan  
+Developed by Abeshan, Khalon
 A high-performance C++ RAG system demonstrating systems engineering, AI integration, and cross-language tooling.
