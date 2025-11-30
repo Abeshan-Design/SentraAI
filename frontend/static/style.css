@@ -1,0 +1,150 @@
+//Layout
+body {
+    font-family: Times-New-Roman;
+    background: #f4f4f9;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+}
+
+#chat-container {
+    width: 90%;
+    max-width: 900px;
+    background: white;
+    border-radius: 10px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    height: 90vh;
+}
+
+//Messages
+#messages {
+    flex: 1;
+    overflow-y: auto;
+    padding-right: 8px;
+}
+
+.message {
+    margin-bottom: 12px;
+    display: flex;
+}
+
+.message-content {
+    padding: 10px 14px;
+    border-radius: 8px;
+    max-width: 75%;
+    line-height: 1.4;
+}
+
+//colors (sender specific)
+.message.user .message-content {
+    background: #007bff;
+    color: white;
+    margin-left: auto;
+}
+
+.message.bot .message-content {
+    background: #e9ecef;
+    color: #333;
+}
+
+//Input
+#input-area {
+    display: flex;
+    gap: 10px;
+}
+
+#question-input {
+    flex: 1;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    resize: none;
+}
+
+#send-btn {
+    padding: 10px 16px;
+    background: #2ecc71;
+    border: none;
+    border-radius: 8px;
+    color: white;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+#send-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+#send-btn:hover:not(:disabled) {
+    background: #27ae60;
+}
+
+//Status
+.status-box {
+    font-size: 14px;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.status-box span {
+    font-weight: bold;
+}
+
+//modal
+#documents-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    justify-content: center;
+    align-items: center;
+}
+
+#documents-modal .modal-content {
+    background: white;
+    width: 70%;
+    max-height: 70%;
+    padding: 20px;
+    border-radius: 10px;
+    overflow-y: auto;
+}
+
+//Documentation
+.document-item {
+    border-bottom: 1px solid #ddd;
+    padding: 12px 0;
+}
+
+.document-item h3 {
+    margin: 0;
+    font-size: 18px;
+}
+
+.source {
+    font-size: 13px;
+    color: #666;
+}
+
+.preview {
+    margin-top: 5px;
+    font-size: 14px;
+    color: #333;
+}
+
+//text loading
+.loading {
+    font-style: italic;
+    color: #555;
+}
