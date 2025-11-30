@@ -152,6 +152,6 @@ Typical SentraAI query cost: ≈ $0.0003 (1/30th of a cent).
 - Vector index inspection tool
 
 ## Author
-Developed by Abeshan, Khalon
+Developed by Abeshan, Khalon, Zion
 
 A high-performance C++ RAG system demonstrating systems engineering, AI integration, and cross-language tooling.
