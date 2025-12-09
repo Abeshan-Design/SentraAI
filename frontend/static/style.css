@@ -1,7 +1,7 @@
 //Layout
 body {
     font-family: Times-New-Roman;
-    background: #f4f4f9;
+    background: linear-gradient(135deg, #eef2ff, #f8f9ff);
     margin: 0;
     padding: 0;
     display: flex;
@@ -11,52 +11,58 @@ body {
 }
 
 #chat-container {
-    width: 90%;
+    width: 95%;
     max-width: 900px;
     background: white;
-    border-radius: 10px;
-    padding: 20px;
+    border-radius: 16px;
+    padding: 20px 22px;
     display: flex;
     flex-direction: column;
     gap: 15px;
     height: 90vh;
+    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.06);
 }
 
 //Messages
 #messages {
     flex: 1;
     overflow-y: auto;
-    padding-right: 8px;
+    padding-right: 6px;
+    scroll-behavior: smooth; 
 }
 
 .message {
-    margin-bottom: 12px;
+    margin-bottom: 14px;
     display: flex;
 }
 
 .message-content {
-    padding: 10px 14px;
-    border-radius: 8px;
+    padding: 12px 16px;
+    border-radius: 16px;
     max-width: 75%;
-    line-height: 1.4;
+    line-height: 1.45;
+    font-size: 15px;
 }
 
 //colors (sender specific)
 .message.user .message-content {
-    background: #007bff;
+    background: linear-gradient(135deg, #6aa9ff, #8b9cff);
     color: white;
     margin-left: auto;
+    box-shadow: 0 4px 15px rgba(76, 110, 255, 0.25);
 }
 
 .message.bot .message-content {
     background: #e9ecef;
     color: #333;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.03);
 }
 
 //Input
 #input-area {
     display: flex;
     gap: 10px;
+    align-items: center;
 }
 
 #question-input {
@@ -66,16 +72,27 @@ body {
     border: 1px solid #ccc;
     font-size: 16px;
     resize: none;
+    outline: none;
+    transition: 0.2s;
 }
+ #question-input: focus{
+     border-color: #8b9cff;
+     box-shadow; 0 0 0 3px rgba(139, 156, 255, 0.15);
 
 #send-btn {
-    padding: 10px 16px;
-    background: #2ecc71;
+    padding: 12px 18px;
+    background: linear-gradient(135deg, #6a9cff, #b28dff);
     border: none;
-    border-radius: 8px;
-    color: white;
+    border-radius: 14px;
+    color: #ffffff;
+    font-weight: 600;
     cursor: pointer;
-    transition: 0.2s;
+    transition: all 0.2s ease;
+}
+
+#send-btn:hover:not(:disabled) {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 18px rgba(122, 140, 255, 0.3);
 }
 
 #send-btn:disabled {
@@ -83,68 +100,65 @@ body {
     cursor: not-allowed;
 }
 
-#send-btn:hover:not(:disabled) {
-    background: #27ae60;
-}
-
 //Status
 .status-box {
     font-size: 14px;
     display: flex;
     justify-content: space-between;
-    margin-bottom: 10px;
+    margin-bottom: 6px;
+    color: #555;
 }
 
 .status-box span {
-    font-weight: bold;
+    font-weight: 600;
 }
 
 //modal
 #documents-modal {
     display: none;
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.6);
+    inset: 0;
+    background: rgba(15, 20, 60, 0.65);
     justify-content: center;
     align-items: center;
+    backdrop-filter: blur(4px);
 }
 
 #documents-modal .modal-content {
-    background: white;
-    width: 70%;
+    background: #ffffff;
+    width: 72%;
     max-height: 70%;
     padding: 20px;
-    border-radius: 10px;
+    border-radius: 16px;
     overflow-y: auto;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.12);
 }
 
 //Documentation
 .document-item {
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid #ececff;
     padding: 12px 0;
 }
 
 .document-item h3 {
     margin: 0;
     font-size: 18px;
+    color: #2f2f44;
 }
 
 .source {
     font-size: 13px;
-    color: #666;
+    color: #777;
 }
-
+     
 .preview {
     margin-top: 5px;
     font-size: 14px;
-    color: #333;
+    color: #444;
 }
 
 //text loading
 .loading {
     font-style: italic;
-    color: #555;
+    color: #6c6c9a;
 }
