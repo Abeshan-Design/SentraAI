@@ -199,7 +199,7 @@ public:
     }
 
     void build(const std::vector<Document>& docs,
-               std::vector<std::vector<float>>&& embeddings) {
+                std::vector<std::vector<float>>&& embeddings) {
         if (docs.empty()) {
             throw std::runtime_error("No documents to build index.");
         }
@@ -207,15 +207,48 @@ public:
             throw std::runtime_error("Docs and embeddings size mismatch");
         }
 
+        // Determine the reference embedding dimension from the first non-empty one
+        std::size_t refDim = 0;
+        for (const auto& emb : embeddings) {
+            if (!emb.empty()) {
+                refDim = emb.size();
+                break;
+            }
+        }
+        if (refDim == 0) {
+            throw std::runtime_error("All embeddings are empty.");
+        }
+
         entries_.clear();
         entries_.reserve(docs.size());
+
         for (size_t i = 0; i < docs.size(); ++i) {
+            auto& emb = embeddings[i];
+
+            if (emb.empty()) {
+                std::cerr << "[WARN] Skipping doc " << docs[i].id
+                        << " because embedding is empty.\n";
+                continue;
+            }
+
+            if (emb.size() != refDim) {
+                std::cerr << "[WARN] Skipping doc " << docs[i].id
+                        << " due to embedding dimension mismatch: "
+                        << emb.size() << " vs " << refDim << "\n";
+                continue;
+            }
+
             IndexEntry e;
             e.doc = docs[i];
-            e.embedding = std::move(embeddings[i]);
+            e.embedding = std::move(emb);
             entries_.push_back(std::move(e));
         }
+
+        if (entries_.empty()) {
+            throw std::runtime_error("No valid entries after filtering embeddings.");
+        }
     }
+
 
     void saveToDisk() const {
         if (entries_.empty()) {
@@ -237,11 +270,8 @@ public:
         out.write(reinterpret_cast<const char*>(&dim), sizeof(dim));
 
         for (const auto& e : entries_) {
-            if (e.embedding.size() != dim) {
-                throw std::runtime_error("Inconsistent embedding dimension");
-            }
             out.write(reinterpret_cast<const char*>(e.embedding.data()),
-                      static_cast<std::streamsize>(dim * sizeof(float)));
+                        static_cast<std::streamsize>(dim * sizeof(float)));
         }
 
         // Save metadata as JSON

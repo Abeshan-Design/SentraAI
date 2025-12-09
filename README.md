@@ -107,6 +107,31 @@ You> What does this document discuss?
 SentraAI> The text argues that...
 ```
 
+## Running the Web Interface
+1. **Install Python dependencies**
+```
+cd frontend
+pip install -r requirements.txt
+```
+
+2. **Start the FastAPI server**:
+```
+python3 -m uvicorn app:app --reload --host 0.0.0.0 --port 8000
+```
+
+3. **Open your browser**:
+Enter: `http://localhost:8000`
+
+### Using the Web Interface
+- **View Documents**: Click "View Documents" to see all indexed documents
+- **Re-ingest PDFs**: Click "Re-ingest PDFs" to reprocess files in 'data_raw/' and rebuild index
+
+### Troubleshoot
+**Use this port if 8000 does not work**
+```
+python3 -m uvicorn app:app --reload --host 0.0.0.0 --port 8001
+```
+
 ## Model Pricing (GPT-5 Nano)
 | Model              | Input (per 1K tokens) | Output (per 1K tokens) |
 |--------------------|------------------------|--------------------------|
@@ -127,5 +152,64 @@ Typical SentraAI query cost: ≈ $0.0003 (1/30th of a cent).
 - Vector index inspection tool
 
 ## Author
-Developed by Abeshan  
+Developed by Abeshan, Khalon, Zion
+
 A high-performance C++ RAG system demonstrating systems engineering, AI integration, and cross-language tooling.
+
+
+
+
+temporary readme instructions
+
+```
+## 🔧 How to Run SentraAI
+
+### 1. Backend prep (from project root)
+
+```powershell
+# 1.1 Install Python deps (once)
+pip install pypdf
+
+# 1.2 Ingest PDFs from data_raw/ → data/
+python ingest_pdfs.py
+
+# 1.3 Build the C++ engine
+g++ -std=c++17 main.cpp -o sentra.exe
+
+# 1.4 (Optional) Rebuild index / smoke-test CLI
+.\sentra.exe
+# You> hello
+# You> exit
+```
+in frontend folder
+```
+cd frontend
+
+# Install FastAPI + deps (once)
+pip install fastapi uvicorn jinja2 pydantic prometheus-client
+
+# Run the API server
+python -m uvicorn app:app --reload --host 0.0.0.0 --port 8000
+```
+Open in browser
+```
+http://localhost:8000
+```
+from project root in seperate terminal
+```
+# 3.1 Start Prometheus (scrapes FastAPI /metrics)
+docker run -p 9090:9090 -v "${PWD}\prometheus.yml:/etc/prometheus/prometheus.yml" prom/prometheus
+```
+from browser
+```
+http://localhost:9090
+```
+in seperate terminal
+```
+# 3.2 Start Grafana
+docker run -d --name grafana -p 3000:3000 grafana/grafana
+```
+from browser
+```
+http://localhost:3000
+```
