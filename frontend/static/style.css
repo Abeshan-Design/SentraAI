@@ -4,36 +4,58 @@ body {
     background: linear-gradient(135deg, #eef2ff, #f8f9ff);
     margin: 0;
     padding: 0;
+    min-height: 100vh;
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    height: 100vh;
+    justify-content: center;    /* Center horizontally */
+    align-items: center;        /* Center vertically */
 }
 
 #chat-container {
     width: 95%;
     max-width: 900px;
-    background: white;
+    background: #ffffff;
     border-radius: 16px;
-    padding: 20px 22px;
+    padding: 20px 24px;
     display: flex;
     flex-direction: column;
     gap: 15px;
     height: 90vh;
-    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.06);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
+    border: 2px solid #e1e6ff;  /* Visible outer border */
+}
+
+/* ===== Status Bar ===== */
+.status-box {
+    font-size: 14px;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 6px;
+    color: #555;
+    padding: 10px 14px;
+    border-radius: 12px;
+    border: 1.5px solid #d6ddff;   /* Border around status */
+    background: #f7f9ff;
+}
+
+.status-box span {
+    font-weight: 600;
 }
 
 /* ===== Messages ===== */
 #messages {
     flex: 1;
     overflow-y: auto;
-    padding-right: 6px;
-    scroll-behavior: smooth; 
+    padding: 10px;
+    scroll-behavior: smooth;
+    border-radius: 12px;
+    border: 1.5px solid #d6ddff;   /* Border around messages area */
+    background: #fbfcff;
 }
 
 .message {
     margin-bottom: 14px;
     display: flex;
+    justify-content: center;   /* Center bubbles horizontally */
 }
 
 .message-content {
@@ -42,38 +64,45 @@ body {
     max-width: 75%;
     line-height: 1.45;
     font-size: 15px;
+    border: 1.5px solid rgba(255, 255, 255, 0.35); /* Bubble outline */
+    text-align: center;
 }
 
 /* Sender colors */
 .message.user .message-content {
     background: linear-gradient(135deg, #6aa9ff, #8b9cff);
     color: white;
-    margin-left: auto;
     box-shadow: 0 4px 15px rgba(76, 110, 255, 0.25);
 }
 
 .message.bot .message-content {
-    background: #e9ecef;
+    background: #eef1ff;
     color: #333;
-    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.03);
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04);
 }
 
-/* ===== Input ===== */
+/* ===== Input Area ===== */
 #input-area {
     display: flex;
     gap: 10px;
     align-items: center;
+    padding: 12px;
+    border-radius: 12px;
+    border: 1.5px solid #d6ddff;   /* Border around input section */
+    background: #f7f9ff;
+    justify-content: center;
 }
 
 #question-input {
     flex: 1;
-    padding: 10px;
-    border-radius: 8px;
-    border: 1px solid #ccc;
+    padding: 12px;
+    border-radius: 12px;
+    border: 1.5px solid #cdd5ff;
     font-size: 16px;
     resize: none;
     outline: none;
     transition: 0.2s;
+    text-align: center;
 }
 
 #question-input:focus {
@@ -83,9 +112,9 @@ body {
 
 /* Send button */
 #send-btn {
-    padding: 12px 18px;
+    padding: 12px 20px;
     background: linear-gradient(135deg, #6a9cff, #b28dff);
-    border: none;
+    border: 1.5px solid #8fa3ff;
     border-radius: 14px;
     color: #ffffff;
     font-weight: 600;
@@ -103,25 +132,13 @@ body {
     cursor: not-allowed;
 }
 
-/* ===== Status ===== */
-.status-box {
-    font-size: 14px;
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 6px;
-    color: #555;
-}
-
-.status-box span {
-    font-weight: 600;
-}
-
 /* ===== Modal ===== */
 #documents-modal {
     display: none;
     position: fixed;
     inset: 0;
     background: rgba(15, 20, 60, 0.65);
+    display: flex;
     justify-content: center;
     align-items: center;
     backdrop-filter: blur(4px);
@@ -135,12 +152,18 @@ body {
     border-radius: 16px;
     overflow-y: auto;
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.12);
+    border: 2px solid #e1e6ff;
+    text-align: center;
 }
 
 /* ===== Documentation ===== */
 .document-item {
-    border-bottom: 1px solid #ececff;
-    padding: 12px 0;
+    border: 1.5px solid #d6ddff;
+    border-radius: 12px;
+    padding: 12px;
+    margin-bottom: 12px;
+    background: #fbfcff;
+    text-align: center;
 }
 
 .document-item h3 {
@@ -164,5 +187,7 @@ body {
 .loading {
     font-style: italic;
     color: #6c6c9a;
+    text-align: center;
 }
+
 
