@@ -195,7 +195,7 @@ Open in browser
 ```
 http://localhost:8000
 ```
- from project root
+from project root in seperate terminal
 ```
 # 3.1 Start Prometheus (scrapes FastAPI /metrics)
 docker run -p 9090:9090 -v "${PWD}\prometheus.yml:/etc/prometheus/prometheus.yml" prom/prometheus
