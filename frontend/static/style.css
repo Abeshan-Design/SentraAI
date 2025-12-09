@@ -1,13 +1,26 @@
 /* ===== Layout ===== */
 body {
-    font-family: "Times New Roman", serif;
+    font-family: "Lato", serif;
     background: linear-gradient(135deg, #eef2ff, #f8f9ff);
     margin: 0;
     padding: 0;
     min-height: 100vh;
     display: flex;
-    justify-content: center;    /* Center horizontally */
-    align-items: center;        /* Center vertically */
+    justify-content: center;
+    align-items: center;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 6px;
+}
+
+.subtitle {
+    text-align: center;
+    font-size: 15px;
+    color: #555a80;
+    margin-top: 2px;
+    margin-bottom: 8px;
 }
 
 #chat-container {
@@ -21,20 +34,22 @@ body {
     gap: 15px;
     height: 90vh;
     box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
-    border: 2px solid #e1e6ff;  /* Visible outer border */
+    border: 2px solid #e1e6ff;  
 }
 
 /* ===== Status Bar ===== */
 .status-box {
     font-size: 14px;
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     margin-bottom: 6px;
     color: #555;
-    padding: 10px 14px;
+    padding: 8px 0;
     border-radius: 12px;
-    border: 1.5px solid #d6ddff;   /* Border around status */
-    background: #f7f9ff;
+    border: none;
+    background: transparent;
 }
 
 .status-box span {
@@ -48,23 +63,22 @@ body {
     padding: 10px;
     scroll-behavior: smooth;
     border-radius: 12px;
-    border: 1.5px solid #d6ddff;   /* Border around messages area */
+    border: 1.5px solid #d6ddff; 
     background: #fbfcff;
 }
 
 .message {
     margin-bottom: 14px;
     display: flex;
-    justify-content: center;   /* Center bubbles horizontally */
+    justify-content: center; 
 }
 
 .message-content {
     padding: 12px 16px;
-    border-radius: 16px;
-    max-width: 75%;
-    line-height: 1.45;
+    border-radius: 18px;
+    max-width: 100%;
     font-size: 15px;
-    border: 1.5px solid rgba(255, 255, 255, 0.35); /* Bubble outline */
+    border: 1.5px solid rgba(255, 255, 255, 0.35);
     text-align: center;
 }
 
@@ -88,21 +102,26 @@ body {
     align-items: center;
     padding: 12px;
     border-radius: 12px;
-    border: 1.5px solid #d6ddff;   /* Border around input section */
+    border: 1.5px solid #d6ddff;
     background: #f7f9ff;
     justify-content: center;
 }
 
 #question-input {
     flex: 1;
-    padding: 12px;
+    min-height: 48px;
+    resize: vertical;
     border-radius: 12px;
-    border: 1.5px solid #cdd5ff;
-    font-size: 16px;
-    resize: none;
+    border: 1.5px solid #c4ceff;
+    padding: 10px 12px;
+    font-size: 14px;
     outline: none;
-    transition: 0.2s;
-    text-align: center;
+    background: #ffffff;
+    font-family: "Lato", serif;
+}
+
+#question-input::placeholder {
+    color: #a0a4c2;
 }
 
 #question-input:focus {
@@ -119,10 +138,13 @@ body {
     color: #ffffff;
     font-weight: 600;
     cursor: pointer;
-    transition: all 0.2s ease;
+    transition: all 0.18s ease;
+    box-shadow: 0 6px 18px rgba(122, 140, 255, 0.4);
+    font-family: "Lato", serif;
 }
 
-#send-btn:hover:not(:disabled) {
+#send-btn:hover {
+    background: linear-gradient(135deg, #5a8cff, #a27dff);
     transform: translateY(-1px);
     box-shadow: 0 6px 18px rgba(122, 140, 255, 0.3);
 }
@@ -138,7 +160,6 @@ body {
     position: fixed;
     inset: 0;
     background: rgba(15, 20, 60, 0.65);
-    display: flex;
     justify-content: center;
     align-items: center;
     backdrop-filter: blur(4px);
@@ -154,6 +175,17 @@ body {
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.12);
     border: 2px solid #e1e6ff;
     text-align: center;
+}
+
+/* Modal close button */
+#close-modal {
+    float: right;
+    cursor: pointer;
+    font-size: 18px;
+    padding: 2px 8px;
+    border-radius: 50%;
+    background: #f0f2ff;
+    border: 1px solid #d3d9ff;
 }
 
 /* ===== Documentation ===== */
@@ -189,5 +221,3 @@ body {
     color: #6c6c9a;
     text-align: center;
 }
-
-

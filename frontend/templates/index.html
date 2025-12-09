@@ -7,57 +7,59 @@
     <link rel="stylesheet" href="/static/style.css">
 </head>
 <body>
-    <div class="container">
+    <!-- Main card container -->
+    <div id="chat-container">
+        <!-- Title + subtitle -->
         <header>
             <h1>SentraAI</h1>
             <p class="subtitle">Retrieval-Augmented Generation System</p>
         </header>
 
-        <div class="stats-bar" id="stats">
-            <div class="stat">
-                <span class="stat-label">Status:</span>
-                <span class="stat-value" id="status">Loading...</span>
+        <!-- Status section -->
+        <div class="status-box">
+            <div class="status-item">
+                <strong>Status:</strong> <span id="status">Loading...</span>
             </div>
-            <div class="stat">
-                <span class="stat-label">Documents:</span>
-                <span class="stat-value" id="doc-count">-</span>
+            <div class="status-item">
+                <strong>Documents:</strong> <span id="doc-count">-</span>
             </div>
-            <div class="stat">
-                <span class="stat-label">Index Size:</span>
-                <span class="stat-value" id="index-size">-</span>
+            <div class="status-item">
+                <strong>Index Size:</strong> <span id="index-size">-</span>
             </div>
         </div>
 
-        <div class="chat-container">
-            <div class="chat-messages" id="messages">
-                <div class="message bot">
-                    <div class="message-content">
-                        <strong>SentraAI:</strong> Hello! Welcome to SentraAI! I'm ready to answer anything you want to know about your documents. What would you like to know?
-                    </div>
+        <!-- Chat messages area -->
+        <div id="messages">
+            <div class="message bot">
+                <div class="message-content">
+                    <strong>SentraAI:</strong> Hello! Welcome to SentraAI! I'm ready to answer anything you want to know about your documents. What would you like to know?
                 </div>
             </div>
-
-            <div class="chat-input-container">
-                <textarea
-                    id="question-input"
-                    placeholder="Ask anything about your added document..."
-                    rows="3"
-                ></textarea>
-                <button id="send-btn" onclick="sendQuestion()">Send</button>
-            </div>
         </div>
 
+        <!-- Input area -->
+        <div id="input-area">
+            <textarea
+                id="question-input"
+                placeholder="Ask anything about your added document..."
+                rows="3"
+            ></textarea>
+            <button id="send-btn" onclick="sendQuestion()">Send</button>
+        </div>
+
+        <!-- Action buttons -->
         <div class="actions">
             <button onclick="showDocuments()">View Documents</button>
             <button onclick="triggerIngest()">Re-ingest PDFs</button>
         </div>
+    </div>
 
-        <div id="documents-modal" class="modal">
-            <div class="modal-content">
-                <span class="close" onclick="closeModal()">&times;</span>
-                <h2>Indexed Documents</h2>
-                <div id="documents-list"></div>
-            </div>
+    <!-- Documents modal -->
+    <div id="documents-modal">
+        <div class="modal-content">
+            <span id="close-modal" onclick="closeModal()">&times;</span>
+            <h2>Indexed Documents</h2>
+            <div id="documents-list"></div>
         </div>
     </div>
 
