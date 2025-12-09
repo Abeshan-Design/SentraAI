@@ -1,6 +1,6 @@
-//Layout
+/* ===== Layout ===== */
 body {
-    font-family: Times-New-Roman;
+    font-family: "Times New Roman", serif;
     background: linear-gradient(135deg, #eef2ff, #f8f9ff);
     margin: 0;
     padding: 0;
@@ -23,7 +23,7 @@ body {
     box-shadow: 0 10px 35px rgba(0, 0, 0, 0.06);
 }
 
-//Messages
+/* ===== Messages ===== */
 #messages {
     flex: 1;
     overflow-y: auto;
@@ -44,7 +44,7 @@ body {
     font-size: 15px;
 }
 
-//colors (sender specific)
+/* Sender colors */
 .message.user .message-content {
     background: linear-gradient(135deg, #6aa9ff, #8b9cff);
     color: white;
@@ -58,7 +58,7 @@ body {
     box-shadow: 0 4px 14px rgba(0, 0, 0, 0.03);
 }
 
-//Input
+/* ===== Input ===== */
 #input-area {
     display: flex;
     gap: 10px;
@@ -75,10 +75,13 @@ body {
     outline: none;
     transition: 0.2s;
 }
- #question-input: focus{
-     border-color: #8b9cff;
-     box-shadow; 0 0 0 3px rgba(139, 156, 255, 0.15);
 
+#question-input:focus {
+    border-color: #8b9cff;
+    box-shadow: 0 0 0 3px rgba(139, 156, 255, 0.15);
+}
+
+/* Send button */
 #send-btn {
     padding: 12px 18px;
     background: linear-gradient(135deg, #6a9cff, #b28dff);
@@ -100,7 +103,7 @@ body {
     cursor: not-allowed;
 }
 
-//Status
+/* ===== Status ===== */
 .status-box {
     font-size: 14px;
     display: flex;
@@ -113,7 +116,7 @@ body {
     font-weight: 600;
 }
 
-//modal
+/* ===== Modal ===== */
 #documents-modal {
     display: none;
     position: fixed;
@@ -134,7 +137,7 @@ body {
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.12);
 }
 
-//Documentation
+/* ===== Documentation ===== */
 .document-item {
     border-bottom: 1px solid #ececff;
     padding: 12px 0;
@@ -150,15 +153,16 @@ body {
     font-size: 13px;
     color: #777;
 }
-     
+
 .preview {
     margin-top: 5px;
     font-size: 14px;
     color: #444;
 }
 
-//text loading
+/* ===== Loading text ===== */
 .loading {
     font-style: italic;
     color: #6c6c9a;
 }
+
